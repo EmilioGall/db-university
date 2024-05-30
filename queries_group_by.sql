@@ -4,7 +4,9 @@ FROM `students`
 GROUP BY YEAR(`students`.`enrolment_date`);
 
 -- 2. Count the teachers who have the office in the same building.
-
+SELECT `teachers`.`office_address` AS `building_address`, COUNT(*) AS `offices_in_building`
+FROM `teachers`
+GROUP BY `teachers`.`office_address`;
 
 -- 3. Calculate the grade point average of each examination roll.
 
