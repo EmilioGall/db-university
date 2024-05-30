@@ -8,7 +8,9 @@ SELECT `teachers`.`office_address` AS `building_address`, COUNT(*) AS `offices_i
 FROM `teachers`
 GROUP BY `teachers`.`office_address`;
 
--- 3. Calculate the grade point average of each examination roll.
-
+-- 3. Calculate the average grade of each exam.
+SELECT `exam_student`.`exam_id` AS `exam_id`, AVG(`exam_student`.`vote`) AS `grade_average` 
+FROM `exam_student` 
+GROUP BY `exam_student`.`exam_id`;
 
 -- 4. Count how many graduate courses there are for each department.
