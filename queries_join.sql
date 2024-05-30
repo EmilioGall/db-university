@@ -56,3 +56,13 @@ ON `degrees`.`department_id` = `departments`.`id`
 WHERE `departments`.`name` = "Dipartimento di matematica";
 
 -- 7. BONUS: Select, for each student, how many exam attempts they have taken to pass each of his or her exams.
+SELECT `students`.`id` AS `student_id`,`students`.`surname`, `students`.`name`, `courses`.`id` AS `course_id`,`courses`.`name` AS `course_name`, COUNT(`exams`.`id`) AS `total_exam_attempts`, MAX(`exam_student`.`vote`) AS `max_vote`
+FROM `students`
+INNER JOIN `exam_student`
+ON `students`.`id` = `exam_student`.`student_id`
+INNER JOIN `exams`
+ON `exam_student`.`exam_id` = `exams`.`id`
+INNER JOIN `courses`
+ON `exams`.`course_id` = `courses`.`id`
+GROUP BY `students`.`id`, `courses`.`id`
+HAVING `max_vote` >= 18;
