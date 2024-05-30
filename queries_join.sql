@@ -1,5 +1,9 @@
 -- 1. Select all students enrolled in the Bachelor of Science in Economics program.
-
+SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`registration_number`
+FROM `students`
+INNER JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = "Corso di Laurea in Economia";
 
 -- 2. Select all master's degree programs in the Department of Neuroscience.
 
