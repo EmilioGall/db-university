@@ -13,4 +13,7 @@ SELECT `exam_student`.`exam_id` AS `exam_id`, AVG(`exam_student`.`vote`) AS `gra
 FROM `exam_student` 
 GROUP BY `exam_student`.`exam_id`;
 
--- 4. Count how many graduate courses there are for each department.
+-- 4. Count how many degrees there are for each department.
+SELECT `degrees`.`department_id` AS `department_identification_number`, COUNT(*) AS `num_of_courses`
+FROM `degrees`
+GROUP BY `degrees`.`department_id`;
