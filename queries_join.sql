@@ -43,6 +43,16 @@ ON `course_teacher`.`teacher_id` = `teachers`.`id`
 ORDER BY `degrees`.`id` ASC;
 
 -- 6. Select all faculty members who teach in the Department of Mathematics. (54)
-
+SELECT DISTINCT `teachers`.`id`, `teachers`.`surname` AS `professors_surname`, `teachers`.`name` AS `professors_name`, `departments`.`name` AS `department_name`
+FROM `teachers`
+INNER JOIN `course_teacher`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+INNER JOIN `courses`
+ON `course_teacher`.`course_id` = `courses`.`id`
+INNER JOIN `degrees`
+ON `courses`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.`name` = "Dipartimento di matematica";
 
 -- 7. BONUS: Select, for each student, how many exam attempts they have taken to pass each of his or her exams.
